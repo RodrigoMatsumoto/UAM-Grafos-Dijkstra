@@ -4,6 +4,9 @@ import model.Vertex;
 
 public class Edge {
     private Vertex vertex;
+
+
+
     private double value;
 
     public Edge(Vertex vertex, double value) {
@@ -17,6 +20,10 @@ public class Edge {
 
     public double getValue() {
         return value;
+    }
+
+    public void setValue(double value) {
+        this.value = value;
     }
 
     @Override
