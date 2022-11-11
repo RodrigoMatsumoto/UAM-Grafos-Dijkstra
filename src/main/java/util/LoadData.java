@@ -14,6 +14,7 @@ public class LoadData {
     public static GraphMatriz loadAdj(String fileName) {
         boolean directed = false;
         int amountVertices;
+        String verticeIncial;
 
         try {
             FileReader fileReader = new FileReader(fileName);
@@ -32,6 +33,8 @@ public class LoadData {
                 graph.addVertex(new Vertex(buffer.readLine()));
             }
 
+            verticeIncial = buffer.readLine();
+            
             while (buffer.ready()) {
                 line = buffer.readLine();
                 String[] partes = line.split(",");
@@ -56,6 +59,7 @@ public class LoadData {
     public static ListAdj loadList(String fileName) {
         boolean directed = false;
         int amountVertices;
+        String verticeIncial;
 
         try {
             FileReader fileReader = new FileReader(fileName);
@@ -74,7 +78,9 @@ public class LoadData {
             for (int i = 0; i < amountVertices; i++) {
                 graph.addVertex(new Vertex(buffer.readLine()));
             }
-
+            
+            verticeIncial = buffer.readLine();
+            
             while (buffer.ready()) {
                 line = buffer.readLine();
                 String[] partes = line.split(",");
@@ -99,7 +105,8 @@ public class LoadData {
     public static Dijkstra loadDijkstra(String fileName) {
         boolean directed = false;
         int amountVertices;
-
+        String verticeIncial;
+        
         try {
             FileReader fileReader = new FileReader(fileName);
             BufferedReader buffer = new BufferedReader(fileReader);
@@ -117,16 +124,18 @@ public class LoadData {
             for (int i = 0; i < amountVertices; i++) {
                 graph.addVertex(new Vertex(buffer.readLine()));
             }
-
+            
+            verticeIncial = buffer.readLine();
+            Vertex verticeInicial = new Vertex(verticeIncial);
+                        
             while (buffer.ready()) {
                 line = buffer.readLine();
                 String[] partes = line.split(",");
                 graph.addEdge(new Vertex(partes[0]), new Vertex(partes[1]), Double.parseDouble(partes[2]));
             }
 
-            Vertex quemInicia = new Vertex("S");
             Dijkstra dijkstra = new Dijkstra(graph.getVertices());
-            dijkstra.encontrarMenorCaminho(quemInicia);
+            dijkstra.encontrarMenorCaminho(verticeInicial);
             buffer.close();
             fileReader.close();
 

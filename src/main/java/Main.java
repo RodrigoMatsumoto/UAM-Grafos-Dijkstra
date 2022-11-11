@@ -13,10 +13,10 @@ public class Main {
 
         Graph lisGraph = LoadData.loadList("src/main/java/data/data.txt");
 
-        System.out.println("Lista:");
-        System.out.println(lisGraph);
+//        System.out.println("Lista:");
+//        System.out.println(lisGraph);
 
-//        Dijkstra teste = LoadData.loadDijkstra("src/main/java/data/data.txt");
+        Dijkstra teste = LoadData.loadDijkstra("src/main/java/data/data.txt");
 
 
     }
