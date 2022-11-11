@@ -11,6 +11,7 @@ import model.Graph;
 import model.Vertex;
 
 public class ListAdj implements Graph {
+
     private HashMap<Vertex, LinkedList<Edge>> vertices;
     private boolean isDirected;
 
@@ -93,6 +94,10 @@ public class ListAdj implements Graph {
         }
 
         return out;
+    }
+    
+    public HashMap<Vertex, LinkedList<Edge>> getVertices() {
+        return vertices;
     }
 
 }
