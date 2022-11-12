@@ -22,6 +22,8 @@ public class Dijkstra {
         this.verticeInicial = verticeInicial;
         this.vertexNaoVisitados = new HashMap<>();
         this.vertexBase = new HashMap<>();
+        this.predecessores = new HashMap<>();
+        this.predecessores.put(this.verticeInicial, new Vertex(""));
     }
 
     public void encontrarMenorCaminho() {
@@ -33,25 +35,23 @@ public class Dijkstra {
             vertexJaVisitados.add(vertexAtual); // S ← S ∪ {u}
             updateCustoAresta(this.vertex.get(vertexAtual), vertexAtual); // para cada Adj[u]
             vertexNaoVisitados.remove(vertexAtual);
-            System.out.println("Eliminando os vertex" + vertexNaoVisitados.toString());
         }
-
-        System.out.println("=========================================");
-        System.out.println(vertexBase.toString());
-        System.out.println("=========================================");
     }
 
     public void updateCustoAresta(LinkedList<Edge> vertexAdjacentes, Vertex vertexAtual) {
-    	System.out.println(vertexAdjacentes.toString());
         vertexAdjacentes.forEach(i -> {
             if (this.vertexBase.get(i.getVertex()).equals(Double.MAX_VALUE)){
                 this.vertexNaoVisitados.put(i.getVertex(), vertexNaoVisitados.get(vertexAtual)+ i.getValue());
                 this.vertexBase.put(i.getVertex(), vertexNaoVisitados.get(vertexAtual)+ i.getValue());
+                this.predecessores.put(i.getVertex(), vertexAtual);
+                System.out.println("Vertex " + i.getVertex() + " predecessor " + vertexAtual);
 
             } else {
                 if((vertexNaoVisitados.get(vertexAtual) + i.getValue()) < this.vertexBase.get(i.getVertex())){
                     this.vertexNaoVisitados.put(i.getVertex(),(vertexNaoVisitados.get(vertexAtual) + i.getValue()));
                     this.vertexBase.put(i.getVertex(),(vertexNaoVisitados.get(vertexAtual) + i.getValue()));
+                    this.predecessores.put(i.getVertex(), vertexAtual);
+                    System.out.println(" --- Vertex " + i.getVertex() + " predecessor " + vertexAtual);
                 }
             }
 
@@ -67,7 +67,6 @@ public class Dijkstra {
                 this.vertexNaoVisitados.put(sigla, Double.MAX_VALUE);
             }
         }
-        System.out.println(vertexNaoVisitados.toString());
     }
 
     public Vertex menorDaLista(HashMap<Vertex, Double> custoArestas) {
