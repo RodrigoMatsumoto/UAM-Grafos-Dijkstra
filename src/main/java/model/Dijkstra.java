@@ -1,27 +1,31 @@
 package model;
 
-import model.list.Edge;
-
-import javax.swing.text.html.parser.Parser;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.LinkedList;
+import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
+
+import model.list.Edge;
 
 public class Dijkstra {
 
+	private Vertex verticeInicial;
     private HashMap<Vertex, Double> vertexNaoVisitados;
     private HashMap<Vertex, Double> vertexBase;
     private HashMap<Vertex, LinkedList<Edge>> vertex; // Q
+    private HashMap<Vertex, Vertex> predecessores;
 
-    public Dijkstra(HashMap<Vertex, LinkedList<Edge>> vertices) {
+    public Dijkstra(HashMap<Vertex, LinkedList<Edge>> vertices, Vertex verticeInicial) {
         this.vertex = vertices;
+        this.verticeInicial = verticeInicial;
         this.vertexNaoVisitados = new HashMap<>();
         this.vertexBase = new HashMap<>();
     }
 
-    public void encontrarMenorCaminho(Vertex quemInicia) {
-        custoArestas(quemInicia); // - todos as chaves são infinitas (∞) (linha 1)
+    public void encontrarMenorCaminho() {
+        custoArestas(this.verticeInicial); // - todos as chaves são infinitas (∞) (linha 1)
         this.vertexBase.putAll(this.vertexNaoVisitados);
         ArrayList<Vertex> vertexJaVisitados = new ArrayList<>(); // - S = ∅ (linha 2)
         while (!vertexNaoVisitados.isEmpty()) {
@@ -38,7 +42,7 @@ public class Dijkstra {
     }
 
     public void updateCustoAresta(LinkedList<Edge> vertexAdjacentes, Vertex vertexAtual) {
-        System.out.println(vertexAdjacentes.toString());
+    	System.out.println(vertexAdjacentes.toString());
         vertexAdjacentes.forEach(i -> {
             if (this.vertexBase.get(i.getVertex()).equals(Double.MAX_VALUE)){
                 this.vertexNaoVisitados.put(i.getVertex(), vertexNaoVisitados.get(vertexAtual)+ i.getValue());
@@ -63,10 +67,8 @@ public class Dijkstra {
                 this.vertexNaoVisitados.put(sigla, Double.MAX_VALUE);
             }
         }
-
         System.out.println(vertexNaoVisitados.toString());
     }
-
 
     public Vertex menorDaLista(HashMap<Vertex, Double> custoArestas) {
         Double menorNumero = Double.MAX_VALUE;
@@ -78,8 +80,18 @@ public class Dijkstra {
                 menorVertex = entrada.getKey();
             }
         }
-
         return menorVertex;
     }
-
+    
+    @Override
+    public String toString() {
+    	String out = "";
+    	List<Map.Entry<Vertex, Double>> verticesStream = vertexBase.entrySet().stream()
+    			.collect(Collectors.toList());
+    	for (Map.Entry<Vertex, Double> item : verticesStream) {
+            out += this.verticeInicial.getName() + " para " + item.getKey().getName() + " o menor custo eh: " + item.getValue();
+            out += "\n";
+        }
+    	return out;
+    }
 }
