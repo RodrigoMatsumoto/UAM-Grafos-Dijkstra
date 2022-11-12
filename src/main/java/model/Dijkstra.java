@@ -44,19 +44,15 @@ public class Dijkstra {
                 this.vertexNaoVisitados.put(i.getVertex(), vertexNaoVisitados.get(vertexAtual)+ i.getValue());
                 this.vertexBase.put(i.getVertex(), vertexNaoVisitados.get(vertexAtual)+ i.getValue());
                 this.predecessores.put(i.getVertex(), vertexAtual);
-                System.out.println("Vertex " + i.getVertex() + " predecessor " + vertexAtual);
 
             } else {
                 if((vertexNaoVisitados.get(vertexAtual) + i.getValue()) < this.vertexBase.get(i.getVertex())){
                     this.vertexNaoVisitados.put(i.getVertex(),(vertexNaoVisitados.get(vertexAtual) + i.getValue()));
                     this.vertexBase.put(i.getVertex(),(vertexNaoVisitados.get(vertexAtual) + i.getValue()));
                     this.predecessores.put(i.getVertex(), vertexAtual);
-                    System.out.println(" --- Vertex " + i.getVertex() + " predecessor " + vertexAtual);
                 }
             }
-
         });
-
     }
 
     public void custoArestas(Vertex quemInicia) {
@@ -82,14 +78,27 @@ public class Dijkstra {
         return menorVertex;
     }
     
+    public String imprimirPredecessores(HashMap<Vertex, Vertex> predecessores, Vertex vertice) {
+
+    	ArrayList<Vertex> caminho = new ArrayList<Vertex>();
+    	
+    	do {
+    		caminho.add(0, vertice);
+    		vertice = predecessores.get(vertice);
+    	}
+    	while(vertice.getName() != "");
+    	
+    	return caminho.toString();
+    }
+    
     @Override
     public String toString() {
     	String out = "";
     	List<Map.Entry<Vertex, Double>> verticesStream = vertexBase.entrySet().stream()
     			.collect(Collectors.toList());
     	for (Map.Entry<Vertex, Double> item : verticesStream) {
-            out += this.verticeInicial.getName() + " para " + item.getKey().getName() + " o menor custo eh: " + item.getValue();
-            out += "\n";
+            out += this.verticeInicial.getName() + " para " + item.getKey().getName() + " o menor custo eh: " + item.getValue() + " caminho " + imprimirPredecessores(this.predecessores, item.getKey());
+            out += "\n";   
         }
     	return out;
     }
