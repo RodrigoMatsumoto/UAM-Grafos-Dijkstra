@@ -32,6 +32,8 @@ public class LoadData {
                 graph.addVertex(new Vertex(buffer.readLine()));
             }
 
+            String verticeInicial = buffer.readLine();
+            
             while (buffer.ready()) {
                 line = buffer.readLine();
                 String[] partes = line.split(",");
@@ -74,7 +76,9 @@ public class LoadData {
             for (int i = 0; i < amountVertices; i++) {
                 graph.addVertex(new Vertex(buffer.readLine()));
             }
-
+            
+            String verticeInicial = buffer.readLine();
+            
             while (buffer.ready()) {
                 line = buffer.readLine();
                 String[] partes = line.split(",");
@@ -99,7 +103,7 @@ public class LoadData {
     public static Dijkstra loadDijkstra(String fileName) {
         boolean directed = false;
         int amountVertices;
-
+        
         try {
             FileReader fileReader = new FileReader(fileName);
             BufferedReader buffer = new BufferedReader(fileReader);
@@ -117,20 +121,21 @@ public class LoadData {
             for (int i = 0; i < amountVertices; i++) {
                 graph.addVertex(new Vertex(buffer.readLine()));
             }
-
+            
+            Vertex verticeInicial = new Vertex(buffer.readLine());
+                        
             while (buffer.ready()) {
                 line = buffer.readLine();
                 String[] partes = line.split(",");
                 graph.addEdge(new Vertex(partes[0]), new Vertex(partes[1]), Double.parseDouble(partes[2]));
             }
 
-            Vertex quemInicia = new Vertex("S");
-            Dijkstra dijkstra = new Dijkstra(graph.getVertices());
-            dijkstra.encontrarMenorCaminho(quemInicia);
+            Dijkstra dijkstra = new Dijkstra(graph.getVertices(), verticeInicial);
+            dijkstra.encontrarMenorCaminho();
             buffer.close();
             fileReader.close();
 
-            return null;
+            return dijkstra;
 
         } catch (IOException ex) {
             System.out.println(ex.getMessage());
