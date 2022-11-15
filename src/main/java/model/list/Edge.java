@@ -5,8 +5,6 @@ import model.Vertex;
 public class Edge {
     private Vertex vertex;
 
-
-
     private double value;
 
     public Edge(Vertex vertex, double value) {

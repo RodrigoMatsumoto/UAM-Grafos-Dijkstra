@@ -5,14 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="1c16937d-b32a-420c-ad9c-4ad2d09c3a9a" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/data/data.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/model/Dijkstra.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/UAM-Grafos-Dijkstra.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/UAM-Grafos-Dijkstra.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/model/Dijkstra.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/Dijkstra.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/model/list/Edge.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/list/Edge.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/model/list/ListAdj.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/list/ListAdj.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/util/LoadData.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/util/LoadData.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -76,6 +73,9 @@
     <property name="aspect.path.notification.shown" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_package_manager_path" value="npm" />
+    <property name="project.structure.last.edited" value="Modules" />
+    <property name="project.structure.proportion" value="0.0" />
+    <property name="project.structure.side.proportion" value="0.0" />
     <property name="restartRequiresConfirmation" value="false" />
     <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
   </component>
@@ -117,7 +117,12 @@
       <workItem from="1668094236880" duration="4427000" />
       <workItem from="1668110042222" duration="16000" />
       <workItem from="1668110374401" duration="250000" />
-      <workItem from="1668110646141" duration="17646000" />
+      <workItem from="1668110646141" duration="18249000" />
+      <workItem from="1668169570899" duration="83000" />
+      <workItem from="1668171145828" duration="2000" />
+      <workItem from="1668273076847" duration="535000" />
+      <workItem from="1668466854939" duration="221000" />
+      <workItem from="1668467217816" duration="2579000" />
     </task>
     <servers />
   </component>
@@ -135,16 +140,5 @@
       </map>
     </option>
     <option name="oldMeFiltersMigrated" value="true" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/model/Dijkstra.java</url>
-          <line>42</line>
-          <option name="timeStamp" value="9" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
   </component>
 </project>

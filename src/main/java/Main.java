@@ -12,8 +12,8 @@ public class Main {
         System.out.println("Lista:");
         System.out.println(lisGraph);
 
-        Dijkstra teste = LoadData.loadDijkstra("src/main/java/data/data.txt");
+        Dijkstra dikstra = LoadData.loadDijkstra("src/main/java/data/data.txt");
         System.out.println("Dijkstra:");
-        System.out.println(teste);
+        System.out.println(dikstra);
     }
 }
